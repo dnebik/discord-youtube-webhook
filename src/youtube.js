@@ -39,6 +39,7 @@ export async function getChannelVideos(channelId) {
       channelId: channelId,
       part: "snippet, id",
       order: "date",
+      maxResults: 20,
     },
   });
   console.log(
