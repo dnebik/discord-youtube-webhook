@@ -1,7 +1,11 @@
 import { getChannelInfo, getNewVideos, getVideoLink } from "./youtube.js";
 import { sendMessage } from "./discord.js";
 
-const requiredEnvVars = ["APP_API_KEY", "APP_CHANNEL_NAME", "APP_DISCORD_WEBHOOK_URL"];
+const requiredEnvVars = [
+  "APP_API_KEY",
+  "APP_CHANNEL_NAME",
+  "APP_DISCORD_WEBHOOK_URL",
+];
 
 requiredEnvVars.forEach((varName) => {
   if (!process.env[varName]) {
@@ -10,10 +14,14 @@ requiredEnvVars.forEach((varName) => {
   }
 });
 
+console.log("Starting...");
+
 async function worker() {
+  console.log("Checking for new videos...");
   try {
     const list = await getNewVideos();
     if (list.length > 0) {
+      console.log(`Found ${list.length} new videos`);
       const channelInfo = getChannelInfo();
       list.forEach((video) => {
         sendMessage({
@@ -22,6 +30,8 @@ async function worker() {
           avatarURL: channelInfo.thumbnails.default.url,
         });
       });
+    } else {
+      console.log("No new videos found");
     }
   } catch (e) {
     console.error(e);
