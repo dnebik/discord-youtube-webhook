@@ -1,0 +1,21 @@
+{
+  "name": "discord-youtube-webhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dnebik",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "bufferutil": "^4.0.8",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.2.5",
+    "utf-8-validate": "^6.0.3",
+    "zlib-sync": "^0.1.9"
+  }
+}
