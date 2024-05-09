@@ -41,6 +41,10 @@ export async function getChannelVideos(channelId) {
       order: "date",
     },
   });
+  console.log(
+    "Fetched videos:",
+    response.data.items.map((v) => v.id.videoId),
+  );
   return response.data.items;
 }
 
