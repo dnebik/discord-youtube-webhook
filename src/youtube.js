@@ -81,8 +81,11 @@ export async function getNewVideos() {
   const lastVideoId = readId();
   console.log("Last video id:", lastVideoId);
 
-  if (!lastVideoId) return saveId(lastVideoFromChannel);
-  if (lastVideoId === lastVideoFromChannel) return;
+  if (!lastVideoId) {
+    saveId(lastVideoFromChannel);
+    return null;
+  }
+  if (lastVideoId === lastVideoFromChannel) return null;
 
   const newVideos = [];
   let lastNextPageToken = null;

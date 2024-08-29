@@ -20,7 +20,7 @@ async function worker() {
   console.log("Checking for new videos...");
   try {
     const list = await getNewVideos();
-    if (list.length > 0) {
+    if (list && list.length > 0) {
       console.log(`Found ${list.length} new videos`);
       const channelInfo = getChannelInfo();
       list.forEach((videoId) => {
