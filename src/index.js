@@ -23,9 +23,9 @@ async function worker() {
     if (list.length > 0) {
       console.log(`Found ${list.length} new videos`);
       const channelInfo = getChannelInfo();
-      list.forEach((video) => {
+      list.forEach((videoId) => {
         sendMessage({
-          content: getVideoLink(video.id.videoId),
+          content: getVideoLink(videoId),
           username: channelInfo.title,
           avatarURL: channelInfo.thumbnails.default.url,
         });
@@ -39,5 +39,5 @@ async function worker() {
   }
 }
 
-setInterval(worker, 5 * 60 * 1000);
+setInterval(worker, 1.5 * 60 * 60 * 1000);
 worker();
