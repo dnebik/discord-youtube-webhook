@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "node src/index.ts"
+    "start": "npx tsx ./src"
   },
   "author": "dnebik",
   "license": "ISC",
@@ -14,7 +14,6 @@
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
     "prettier": "^3.2.5",
-    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
 }

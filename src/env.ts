@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import * as process from "node:process";
 
 const FILENAME = ".env.json";
 
@@ -16,7 +17,6 @@ export function getEnvJson(): IJsonENV {
   if (jsonEnv) return jsonEnv;
   try {
     const value = fs.readFileSync(FILENAME, "utf8");
-    console.log(value);
     jsonEnv = JSON.parse(value);
 
     if (!jsonEnv.APP_API_KEY) {
@@ -28,6 +28,17 @@ export function getEnvJson(): IJsonENV {
       console.error("APP_CHANNELS is empty");
       process.exit(11);
     }
+
+    jsonEnv.APP_CHANNELS.forEach((entry) => {
+      if (!entry.NAME) {
+        console.error("NAME is not defined");
+        process.exit(13);
+      }
+      if (!entry.DISCORD_WEBHOOK_URL) {
+        console.error("DISCORD_WEBHOOK_URL is not defined");
+        process.exit(14);
+      }
+    });
 
     return jsonEnv;
   } catch (e) {
