@@ -14,4 +14,4 @@
 
 ## Запуск
 
-`npm start` или `npx tpx ./src`
+`npm start` или `npx tsx ./src`
