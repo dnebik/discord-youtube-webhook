@@ -1,18 +1,17 @@
 # Discord youtube webhook
 
-Сервис преднозначен для отправки уведомлений о новых видео с канала
+Сервис преднозначен для отправки уведомлений о новых видео с каналов на discord канал
 
 ## Настройка
-Сервис работает на nodejs версии 18 и выше
-
 Установить зависимости `npm i`
 
 Заполнить `.env`:
 
-- `APP_API_KEY` - ключь Google api
-- `APP_CHANNEL_NAME` - имя youtube канала
-- `APP_DISCORD_WEBHOOK_URL` - url discord webhook
+- `APP_API_KEY` - Ключь Google api
+- `APP_CHANNELS` - Массив каналов для отслеживания 
+  - `NAME` - Имя канала
+  - `DISCORD_WEBHOOK_URL` - Ссылка для дискорд-интеграции вебхука к данному каналу
 
 ## Запуск
 
-`npm start`
+`npm start` или `npx tpx ./src`
