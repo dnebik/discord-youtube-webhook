@@ -147,7 +147,7 @@ export function useYoutubeChannelWatcher(
       // Не запускать если была совершена остановка до запуска
       if (isStopped) return;
 
-      interval = setInterval(worker, 1.5 * 60 * 60 * 1000);
+      interval = setInterval(worker, 0.5 * 60 * 60 * 1000);
       worker();
     })
     .catch((err) => {
