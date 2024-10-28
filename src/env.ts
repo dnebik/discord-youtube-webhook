@@ -4,6 +4,8 @@ import * as process from "node:process";
 const FILENAME = ".env.json";
 
 interface IJsonENV {
+  APP_PROXY_HOST: null | string;
+  APP_PROXY_PORT: null | number;
   APP_API_KEY: string;
   APP_CHANNELS: {
     NAME: string;
