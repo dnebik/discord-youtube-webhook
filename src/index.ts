@@ -10,13 +10,18 @@ channels.forEach((channel) => {
   const { sendMessage } = makeWebhookClient(channel.DISCORD_WEBHOOK_URL);
 
   function handleNewVideos(list: string[], { channel }) {
-    list.forEach((videoId) => {
+    const sendRequest = (videoId) =>
       sendMessage({
         content: getVideoLink(videoId),
         username: channel.title,
         avatarURL: channel.thumbnails.default.url,
       });
-    });
+
+    list.reduce(
+      (promise, videoId) =>
+        promise.catch(() => false).finally(() => sendRequest(videoId)),
+      Promise.resolve(),
+    );
   }
 
   useYoutubeChannelWatcher(channel.NAME, {

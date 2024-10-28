@@ -1,10 +1,11 @@
-import { WebhookClient } from "discord.js";
+import { axiosInstance } from "./api";
+import retry from "async-retry";
 
 export function makeWebhookClient(url) {
-  const webhook = new WebhookClient({ url });
-
   function sendMessage(payload) {
-    webhook.send(payload);
+    return retry(() => axiosInstance.post(url, payload)).catch((reason) =>
+      console.error(reason?.message || "error"),
+    );
   }
 
   return {
